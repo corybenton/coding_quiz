@@ -1,10 +1,8 @@
 const start = document.querySelector("#start");
 const answer = document.querySelector("#choices");
-const q = document.querySelector("#Questions");
-const a1 = document.querySelector("#choice1");
-const a2 = document.querySelector("#choice2");
-const a3 = document.querySelector("#choice3");
-const a4 = document.querySelector("#choice4");
+const quiz = document.querySelector("#quiz");
+const clear = document.querySelector("#timer");
+const submit = document.querySelector("#submit");
 const questions = ["What does API stand for?"];
 const answers = [["Application Programming Interface", "Application to Program Internet",
     "Amateur Programming Interface", "Application Public Interfaces"]];
@@ -15,9 +13,10 @@ let wrong = 0;
 
 start.addEventListener("click", function(event) {
     event.stopPropagation();
+    event.preventDefault();
     const element = event.target;
     
-    if (element.matches ("button") === true) {
+    if (element.matches("#start")) {
         hideInit();
         renderQuestion();
         timer(timeleft);
@@ -35,13 +34,14 @@ answer.addEventListener("click", function(event){
         event.stopPropagation();
         const element = event.target;
 
-        if (element.matches("li") === true) {
+        if (element.matches("li")) {
             if (element.textContent != correct[localStorage.getItem("option")]) {
                 wrong++;
             };
 
             if (questions.length == 0) {
-                score = timeleft - (wrong * 15);
+                score = document.getElementById("counter").textContent - (wrong * 15);
+                quiz.setAttribute("style", "display: none"); 
             } else {
                 renderQuestion();
             }
@@ -67,13 +67,30 @@ function timer(timeleft) {
         timeleft --;
         if (timeleft < 0 || score != "") {
             clearInterval(timeInterval);
-            gameEnd(score);
+            gameEnd();
         } else {
             document.getElementById("counter").textContent = timeleft;
         }
     },1000);
 }
 
-function gameEnd(timeleft) {
-    // show end game screen
+function gameEnd() {
+    clear.setAttribute("style", "display: none")
+    
+    const showup = document.querySelectorAll(".show");
+    localStorage.setItem("score", score);
+    document.getElementById("congrats").textContent = "Congratulations! You finished the quiz.  You got " 
+        + (1 - wrong) + " questions right and " + wrong + " questions wrong. Your score was " 
+        + score + ". Click below to see how you stack up."
+    for (let i = 0; i < showup.length; i++) {
+        showup[i].setAttribute("style", "display: block");
+    }
+    submit.addEventListener("click", function(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        const element = event.target;
+        if (element.matches("button")) {
+            localStorage.setItem("initials", document.getElementById("initials").textContent);
+        }
+    });
 }

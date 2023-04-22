@@ -11,9 +11,9 @@
         <header>
             <h1 class = "display">Coding Quiz</h1>
             <p class = "display">Instructions go here.</p>
+            <a class = "display" href = "scores.html">High Scores</a>
         </header>
-        <a class = "display" href = "scores.html">High Scores</a>
-        <section>
+        <section id = "timer">
             <p>Countdown</p>
             <p id = "counter"></p>
         </section>
@@ -27,7 +27,13 @@
             </ol>
         </section>
         <button class = "display" id = "start">START</button>
-
+        <section>
+            <p id = "congrats"></p>
+            <form class = "show">
+                <label for = "initials">Initials:</label>
+                <input type = "text" id = "initials" name = "initials">
+                <input id = "submit" type = "submit" value = "Submit" onclick = "window.location.href = 'scores.html';">
+            </form>
         <script src = "script.js"></script>
     </body>
 </html>
