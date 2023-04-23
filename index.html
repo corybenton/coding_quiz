@@ -9,14 +9,17 @@
     </head>
     <body>
         <header>
-            <h1 class = "display">Coding Quiz</h1>
-            <p class = "display">Instructions go here.</p>
             <a class = "display" href = "scores.html">High Scores</a>
+            <h1 class = "display">Coding Quiz</h1>
+            <section id = "timer">
+                <p>Countdown</p>
+                <p id = "counter"></p>
+            </section>
         </header>
-        <section id = "timer">
-            <p>Countdown</p>
-            <p id = "counter"></p>
-        </section>
+        <p class = "display">
+            There will be a series of 8 questions.  You have 75 seconds to complete the quiz.
+            You will lose 15 points for a wrong answer.  Click on the answer to choose.  Good luck!
+        </p>
         <section id = "quiz">
             <p id = "Question"></p>
             <ol id = "choices">
