@@ -5,8 +5,9 @@ const clear = document.querySelector("#timer");
 const submit = document.querySelector("#submit");
 const questions = ["What does API stand for?", "Which markers identify an array?"];
 const answers = [["Application Programming Interface", "Application to Program Internet",
-    "Amateur Programming Interface", "Application Public Interfaces"],['""', "[]", "()", "{}"]];
-const correct = ["Application Programming Interface", "[]"];
+    "Amateur Programming Interface", "Application Public Interfaces"],['"  "', "[  ]", 
+    "(  )", "{  }"]];
+const correct = ["Application Programming Interface", "[  ]"];
 let score = "";
 let timeleft = 75;
 let wrong = 0;
@@ -20,6 +21,10 @@ start.addEventListener("click", function(event) {
         hideInit();
         renderQuestion();
         timer(timeleft);
+        qback = document.querySelectorAll("li");
+        for (let i=0; i < qback.length; i++) {
+            qback[i].setAttribute("style", "background-color: bisque");
+        }
     };
 });
 
