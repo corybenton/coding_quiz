@@ -3,10 +3,10 @@ const answer = document.querySelector("#choices");
 const quiz = document.querySelector("#quiz");
 const clear = document.querySelector("#timer");
 const submit = document.querySelector("#submit");
-const questions = ["What does API stand for?"];
+const questions = ["What does API stand for?", "Which markers identify an array?"];
 const answers = [["Application Programming Interface", "Application to Program Internet",
-    "Amateur Programming Interface", "Application Public Interfaces"]];
-const correct = ["Application Programming Interface"];
+    "Amateur Programming Interface", "Application Public Interfaces"],['""', "[]", "()", "{}"]];
+const correct = ["Application Programming Interface", "[]"];
 let score = "";
 let timeleft = 75;
 let wrong = 0;
@@ -59,6 +59,7 @@ function renderQuestion() {
         document.getElementById(target).textContent = answers[option][choice];
         answers[option].splice(choice, 1);
     };
+    answers.splice(option,1);
     localStorage.setItem("option", option);
 }
 
@@ -80,17 +81,11 @@ function gameEnd() {
     const showup = document.querySelectorAll(".show");
     localStorage.setItem("score", score);
     document.getElementById("congrats").textContent = "Congratulations! You finished the quiz.  You got " 
-        + (1 - wrong) + " questions right and " + wrong + " questions wrong. Your score was " 
+        + (2 - wrong) + " questions right and " + wrong + " questions wrong. Your score was " 
         + score + ". Click below to see how you stack up."
+    
     for (let i = 0; i < showup.length; i++) {
         showup[i].setAttribute("style", "display: block");
     }
-    submit.addEventListener("click", function(event) {
-        event.stopPropagation();
-        event.preventDefault();
-        const element = event.target;
-        if (element.matches("button")) {
-            localStorage.setItem("initials", document.getElementById("initials").textContent);
-        }
-    });
+
 }
