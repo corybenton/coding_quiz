@@ -3,16 +3,25 @@ const answer = document.querySelector("#choices");
 const quiz = document.querySelector("#quiz");
 const clear = document.querySelector("#timer");
 const submit = document.querySelector("#submit");
+
 const questions = ["What does API stand for?", "Which symbols denote an array?",
-    "Which language is NOT used in webpages?"];
+    "Which language is NOT used in webpages?", "Which command will switch to a new branch?",
+    "What HTML type will display text as a heading?", "What CSS command will bold text?",
+    "Which function will add two arrays?", "How many argument are required in a 'for' loop?"];
+
 const answers = [["Application Programming Interface", "Application to Program Internet",
     "Amateur Programming Interface", "Application Public Interfaces"],['"  "', "[  ]", 
-    "(  )", "{  }"],["JavaScript", "CSS", "HTML", "Visual Basic"]];
-const correct = ["Application Programming Interface", "[  ]", "Visual Basic"];
+    "(  )", "{  }"],["JavaScript", "CSS", "HTML", "Visual Basic"],["git push", "git checkout", 
+    "git branch", "git switch"],["<h1>", "<head>", "<header>", "<p>"],["font-weight", "font-type", 
+    "font-bold", "bold-font"],["+", "concat", "smush", "add"],["0","1","2","3"]];
+
+const correct = ["Application Programming Interface", "[  ]", "Visual Basic", "git checkout",
+    "<h1>", "font-weight", "concat", "3"];
 let score = "";
 let timeleft = 75;
 let wrong = 0;
 const numberQuestions = questions.length;
+let option = 0;
 
 start.addEventListener("click", function(event) {
     event.stopPropagation();
@@ -42,11 +51,11 @@ answer.addEventListener("click", function(event){
         const element = event.target;
 
         if (element.matches("li")) {
-            if (element.textContent != correct[localStorage.getItem("option")]) {
+            if (element.textContent != correct[option]) {
                 wrong++;
             };
         }
-        correct.splice(localStorage.getItem("option"), 1);
+        correct.splice(option, 1);
 
             if (questions.length == 0) {
                 score = document.getElementById("counter").textContent - (wrong * 15);
@@ -57,7 +66,7 @@ answer.addEventListener("click", function(event){
 });
 
 function renderQuestion() {
-    let option = Math.floor(Math.random()*questions.length);
+    option = Math.floor(Math.random()*questions.length);
     document.getElementById("Question").textContent = questions[option];
     questions.splice(option, 1);
     
@@ -68,7 +77,7 @@ function renderQuestion() {
         answers[option].splice(choice, 1);
     };
     answers.splice(option, 1);
-    localStorage.setItem("option", option);
+    return option;
 }
 
 function timer(timeleft) {
