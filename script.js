@@ -3,14 +3,16 @@ const answer = document.querySelector("#choices");
 const quiz = document.querySelector("#quiz");
 const clear = document.querySelector("#timer");
 const submit = document.querySelector("#submit");
-const questions = ["What does API stand for?", "Which markers identify an array?"];
+const questions = ["What does API stand for?", "Which symbols denote an array?",
+    "Which language is NOT used in webpages?"];
 const answers = [["Application Programming Interface", "Application to Program Internet",
     "Amateur Programming Interface", "Application Public Interfaces"],['"  "', "[  ]", 
-    "(  )", "{  }"]];
-const correct = ["Application Programming Interface", "[  ]"];
+    "(  )", "{  }"],["JavaScript", "CSS", "HTML", "Visual Basic"]];
+const correct = ["Application Programming Interface", "[  ]", "Visual Basic"];
 let score = "";
 let timeleft = 75;
 let wrong = 0;
+const numberQuestions = questions.length;
 
 start.addEventListener("click", function(event) {
     event.stopPropagation();
@@ -23,7 +25,7 @@ start.addEventListener("click", function(event) {
         timer(timeleft);
         qback = document.querySelectorAll("li");
         for (let i=0; i < qback.length; i++) {
-            qback[i].setAttribute("style", "background-color: bisque");
+            qback[i].setAttribute("style", "background-color: bisque")
         }
     };
 });
@@ -43,6 +45,8 @@ answer.addEventListener("click", function(event){
             if (element.textContent != correct[localStorage.getItem("option")]) {
                 wrong++;
             };
+        }
+        correct.splice(localStorage.getItem("option"), 1);
 
             if (questions.length == 0) {
                 score = document.getElementById("counter").textContent - (wrong * 15);
@@ -50,7 +54,6 @@ answer.addEventListener("click", function(event){
             } else {
                 renderQuestion();
             }
-        }
 });
 
 function renderQuestion() {
@@ -64,7 +67,7 @@ function renderQuestion() {
         document.getElementById(target).textContent = answers[option][choice];
         answers[option].splice(choice, 1);
     };
-    answers.splice(option,1);
+    answers.splice(option, 1);
     localStorage.setItem("option", option);
 }
 
@@ -86,7 +89,7 @@ function gameEnd() {
     const showup = document.querySelectorAll(".show");
     localStorage.setItem("score", score);
     document.getElementById("congrats").textContent = "Congratulations! You finished the quiz.  You got " 
-        + (2 - wrong) + " questions right and " + wrong + " questions wrong. Your score was " 
+        + (numberQuestions - wrong) + " questions right and " + wrong + " questions wrong. Your score was " 
         + score + ". Click below to see how you stack up."
     
     for (let i = 0; i < showup.length; i++) {

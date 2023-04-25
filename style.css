@@ -16,6 +16,7 @@ header{
 h1 {
     font-size: 36px;
     padding: 10px;
+    order:2;
 }
 
 header p {
@@ -26,11 +27,12 @@ header p {
 header a {
     text-decoration: none;
     color: black;
-    font-size: 20px;
+    font-size: 22px;
+    order:3;
 }
 
 #timer {
-    text-align: right;
+    order: 1;
 }
 
 body p {
@@ -40,7 +42,7 @@ body p {
 }
 
 #start {
-    width: 15%;
+    width: 200px;
     font-size: 40px;
 }
 
@@ -56,15 +58,32 @@ body {
 
 li {
     font-size: 16px;
-    margin: 15px 30%;
+    margin: 15px 40%;
     border-radius: 20px;
 }
 
 section button {
-    text-align: center;
     font-size: 20px;
 }
 
 h2 {
     font-size: 24px;
+}
+
+#high li {
+    list-style: decimal;
+    background-color:darkturquoise;
+    font-size: 19px;
+    letter-spacing: 2px;
+    font-family: monospace;
+}
+
+#choices li:hover {
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+#highscore {
+    margin: 10px;
 }
