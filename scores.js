@@ -9,16 +9,15 @@ submit.addEventListener("click", function (event) {
     const element = event.target;
     if (element.matches("input")) {
         const initials = document.getElementById("highscore");
-        localStorage.setItem("initials", initials[0].value);
         initials.setAttribute("style", "display: none")
     }
     highScoreList();
+    return initials;
 });
 
 function highScoreList() {
-    const newInitials = localStorage.getItem("initials");
     const newEntry = {
-        initials: newInitials,
+        initials: initials.value,
         score: newScore,
     };
     if (scoreArray == null) {
