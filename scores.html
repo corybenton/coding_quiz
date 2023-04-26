@@ -7,20 +7,27 @@
         <link rel = "stylesheet" href="reset.css">
         <link rel = "stylesheet" href="style.css">
     </head>
+    
     <body>
         <section>    
             <h2>High Scores</h2>
             <hr/>
+            
             <form id = "highscore">
                 <label for = "initials">Initials:</label>
                 <input type = "text" id = "initials" name = "initials">
                 <input type = "button" id = "submit" value = "Submit">
             </form>
+            
+            <!-- holder for high score list -->
             <ol id = "high">
             </ol>
         </section>
+        
         <button id = "clear">Clear High Scores</button>
+        
         <button id = "back" onclick = "window.location.href = 'index.html';">Back</button>
+        
         <script src = "scores.js"></script>
     </body>
 </html>

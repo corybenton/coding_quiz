@@ -16,7 +16,7 @@ header{
 h1 {
     font-size: 36px;
     padding: 10px;
-    order:2;
+    order: 2;
 }
 
 header p {
@@ -28,7 +28,7 @@ header a {
     text-decoration: none;
     color: black;
     font-size: 22px;
-    order:3;
+    order: 3;
 }
 
 #timer {
@@ -87,4 +87,10 @@ h2 {
 
 #highscore {
     margin: 10px;
+}
+
+@media screen and (max-width: 750px){
+    li{
+        margin: 15px 25%;
+    }
 }

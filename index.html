@@ -7,6 +7,7 @@
         <link rel = "stylesheet" href="reset.css">
         <link rel = "stylesheet" href="style.css">
     </head>
+    
     <body>
         <header>
             <h1 class = "display">Coding Quiz</h1>
@@ -16,10 +17,14 @@
                 <p id = "counter"></p>
             </section>
         </header>
+        
         <p class = "display">
-            There will be a series of 8 questions.  You have 75 seconds to complete the quiz.
-            You will lose 15 points for a wrong answer.  Click on the answer to choose.  Good luck!
+            There will be a series of 8 questions.  You have 100 seconds to complete the quiz.
+            You will lose 15 seconds for a wrong answer.  Click on the answer to choose.  Your 
+            score will be equal to the amount of time left. Good luck!
         </p>
+        
+        <!-- Framework for questions and answer choices -->
         <section id = "quiz">
             <p id = "Question"></p>
             <ol id = "choices">
@@ -29,7 +34,9 @@
                 <li id = "choice4"></li>
             </ol>
         </section>
+        
         <button class = "display" id = "start">START</button>
+        
         <section>
             <p id = "congrats"></p>
             <button class = "show" onclick = "window.location.href = 'scores.html';">See scores</button>

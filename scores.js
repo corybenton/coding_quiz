@@ -3,6 +3,7 @@ const submit = document.querySelector("#submit");
 const newScore = localStorage.getItem("score");
 const clear = document.querySelector("#clear")
 
+// takes in initials and updates high score list
 submit.addEventListener("click", function (event) {
     event.stopPropagation();
     event.preventDefault();
@@ -15,6 +16,7 @@ submit.addEventListener("click", function (event) {
     return initials;
 });
 
+// adds items to high score list or creates new list
 function highScoreList() {
     const newEntry = {
         initials: initials.value,
@@ -30,6 +32,7 @@ function highScoreList() {
     renderHighScore();
 }
 
+// displays high score list
 function renderHighScore() {
     clearNodes();
     
@@ -40,6 +43,7 @@ function renderHighScore() {
         popper = scoreArray.length;
     }
     
+    // popper prevents error for loop if null array
     for (let i = 0; i < popper; i++) {
         const node = document.createElement("li");
         if(scoreArray[i].initials.length == 2) {
@@ -52,6 +56,7 @@ function renderHighScore() {
     }
 }
 
+// clear high scores from local storage and html when button is pressed 
 clear.addEventListener("click", function (event) {
     event.stopPropagation();
     const element = event.target;
@@ -62,6 +67,7 @@ clear.addEventListener("click", function (event) {
     renderHighScore();
 });
 
+// removes current html elements
 function clearNodes() {
     const list = document.getElementById("high");
     while (list.hasChildNodes()) {
@@ -69,6 +75,7 @@ function clearNodes() {
     }
 }
 
+//sorts scores by score
 function sort() {
     if (scoreArray.length > 1) {
         for (let i=0; i < scoreArray.length-1; i++) {
