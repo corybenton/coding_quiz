@@ -1,5 +1,5 @@
 # coding_quiz
-## Cory Benton's Coding Quiz
+Cory Benton's Coding Quiz
 
 ## Description
 This is a short quiz of 8 questions with a high score list.  The high score list is stored locally.  The 8 questions were derived by me and are about coding.  When the START button is pressed, a timer will start and the series of questions will begin to be displayed.  The user has 100 seconds to answer all of the questions.  If time runs out the quiz stops.  If a wrong answer is chosen 15 seconds are deducted from the timer.
